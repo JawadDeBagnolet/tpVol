@@ -1,6 +1,7 @@
 <?php
 
-class AvionRepository{
+class AvionRepository
+{
     public function recupererAvion(){
         $avion = [];
         $bdd= new bdd();

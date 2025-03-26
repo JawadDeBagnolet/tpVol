@@ -108,4 +108,36 @@ class Vol{
         $this->villeArv = $villeArv;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * @param mixed $prix
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRefAvion()
+    {
+        return $this->refAvion;
+    }
+
+    /**
+     * @param mixed $refAvion
+     */
+    public function setRefAvion($refAvion)
+    {
+        $this->refAvion = $refAvion;
+    }
+
 }
