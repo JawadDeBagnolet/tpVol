@@ -67,6 +67,20 @@ if(isset($_GET['parametre'])){
                             <label for="floatingInputGroup1">Prénom</label>
                         </div>
                     </div>
+                    <div class="input-group mb-3" style="margin-top: 10px">
+                        <span class="input-group-text">🏙️</span>
+                        <div class="form-floating">
+                            <input name="ville" type="text" class="form-control" id="floatingInputGroup1" placeholder="Ville">
+                            <label for="floatingInputGroup1">Ville</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3" style="margin-top: 10px">
+                        <span class="input-group-text">📅</span>
+                        <div class="form-floating">
+                            <input name="date_naissance" type="date" class="form-control" id="floatingInputGroup1" placeholder="Date de naissance">
+                            <label for="floatingInputGroup1">Date de naissance</label>
+                        </div>
+                    </div>
                     <div class="input-group mb-3" style="margin-top: 10px;">
                         <span class="input-group-text">📧</span>
                         <div class="form-floating">

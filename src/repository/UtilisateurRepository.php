@@ -4,7 +4,8 @@ class UtilisateurRepository{
     public function inscription(Utilisateur $utilisateur){
         $bdd=new bdd();
         $database=$bdd->getBdd();
-        $req = $database->prepare("INSERT INTO user(nom,prenom,email,mdp,role) values(:nom,:prenom,:email,:mdp,:role) ");
+        $req = $database->prepare("INSERT INTO utilisateur(nom,prenom,date_naissance,ville,email,mdp,role) values(:nom,:prenom,:date_naissance,:ville,:email,:mdp,:role) ");
+        var_dump($utilisateur->getDateNaissance());
         $req->execute(array(
             "nom" => $utilisateur->getNom(),
             "prenom" => $utilisateur->getPrenom(),
@@ -19,7 +20,7 @@ class UtilisateurRepository{
     public function connexion(Utilisateur $utilisateur){
         $bdd=new bdd();
         $database=$bdd->getBdd();
-        $req = $database->prepare('SELECT * FROM user WHERE email = :email');
+        $req = $database->prepare('SELECT * FROM utilisateur WHERE email = :email');
         $req->execute(array(
             'email' => $utilisateur->getEmail()
         ));
@@ -35,7 +36,7 @@ class UtilisateurRepository{
     public function suppression(Utilisateur $utilisateur){
         $bdd = new bdd();
         $database=$bdd->getBdd();
-        $req = $database->prepare("DELETE FROM user WHERE id_user = :id_user");
+        $req = $database->prepare("DELETE FROM utilisateur WHERE id_utilisateur = :id_utilisateur");
         $req->execute(array(
             "id_utilisateur"=>$utilisateur->getIdUtilisateur()
         ));
@@ -45,7 +46,7 @@ class UtilisateurRepository{
     {
         $bdd = new bdd();
         $database = $bdd->getBdd();
-        $req = $database->prepare('SELECT email FROM user WHERE email=:email');
+        $req = $database->prepare('SELECT email FROM utilisateur WHERE email=:email');
         $req->execute(array(
             "email"=>$utilisateur->getEmail()
         ));
@@ -57,5 +58,13 @@ class UtilisateurRepository{
         else{
             return false;
         }
+    }
+    public function nombreUtilisateur(){
+        $bdd = new bdd();
+        $database = $bdd->getBdd();
+        $req = $database->prepare('SELECT COUNT(id_utilisateur) FROM utilisateur');
+        $req->execute();
+        $result = $req->fetch();
+        return $result[0];
     }
 }

@@ -5,6 +5,7 @@ class Utilisateur{
     private $nom;
     private $prenom;
     private $email;
+    private $mdp;
     private $dateNaissance;
     private $ville;
     private $role;
@@ -95,6 +96,22 @@ class Utilisateur{
     /**
      * @return mixed
      */
+    public function getMdp()
+    {
+        return $this->mdp;
+    }
+
+    /**
+     * @param mixed $mdp
+     */
+    public function setMdp($mdp)
+    {
+        $this->mdp = $mdp;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getDateNaissance()
     {
         return $this->dateNaissance;
@@ -105,7 +122,7 @@ class Utilisateur{
      */
     public function setDateNaissance($dateNaissance)
     {
-        $this->date_naissance = $dateNaissance;
+        $this->dateNaissance = $dateNaissance;
     }
 
     /**
