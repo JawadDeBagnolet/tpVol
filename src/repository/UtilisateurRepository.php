@@ -24,12 +24,12 @@ class UtilisateurRepository{
         $req->execute(array(
             'email' => $utilisateur->getEmail()
         ));
-        $utilisateur = $req->fetch();
-        if($utilisateur){
-            $utilisateur->setMdp($utilisateur['mdp']);
-            $utilisateur->setRole($utilisateur["role"]);
-            $utilisateur->setEmail($utilisateur["email"]);
-            $utilisateur->setIdUtilisateur($utilisateur['id_utilisateur']);
+        $donnees = $req->fetch();
+        if($donnees){
+            $donnees->setMdp($donnees['mdp']);
+            $donnees->setRole($donnees["role"]);
+            $donnees->setEmail($donnees["email"]);
+            $donnees->setIdUtilisateur($donnees['id_utilisateur']);
         }
         return $utilisateur;
     }

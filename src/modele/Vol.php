@@ -2,11 +2,12 @@
 
 class Vol{
     private $idVol;
+    private $dateDep;
     private $heureDep;
-    private $heureArv;
     private $villeDep;
     private $villeArv;
     private $refAvion;
+    private $refPilote;
     private $prix;
 
     public function __construct(array $donnees)
@@ -58,22 +59,6 @@ class Vol{
     public function setHeureDep($heureDep)
     {
         $this->heureDep = $heureDep;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getHeureArv()
-    {
-        return $this->heureArv;
-    }
-
-    /**
-     * @param mixed $heureArv
-     */
-    public function setHeureArv($heureArv)
-    {
-        $this->heureArv = $heureArv;
     }
 
     /**
@@ -138,6 +123,38 @@ class Vol{
     public function setRefAvion($refAvion)
     {
         $this->refAvion = $refAvion;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDateDep()
+    {
+        return $this->dateDep;
+    }
+
+    /**
+     * @param mixed $dateDep
+     */
+    public function setDateDep($dateDep)
+    {
+        $this->dateDep = $dateDep;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRefPilote()
+    {
+        return $this->refPilote;
+    }
+
+    /**
+     * @param mixed $refPilote
+     */
+    public function setRefPilote($refPilote)
+    {
+        $this->refPilote = $refPilote;
     }
 
 }

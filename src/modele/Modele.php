@@ -1,9 +1,11 @@
 <?php
 
-class Avion{
-    private $idAvion;
-    private $type;
-    private $refModele;
+class Modele
+{
+    private $idModele;
+    private $modele;
+    private $marque;
+
 
     public function __construct(array $donnees)
     {
@@ -26,49 +28,49 @@ class Avion{
     /**
      * @return mixed
      */
-    public function getIdAvion()
+    public function getIdModele()
     {
-        return $this->idAvion;
+        return $this->idModele;
     }
 
     /**
-     * @param mixed $idAvion
+     * @param mixed $idModele
      */
-    public function setIdAvion($idAvion)
+    public function setIdModele($idModele)
     {
-        $this->idAvion = $idAvion;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param mixed $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
+        $this->idModele = $idModele;
     }
 
     /**
      * @return mixed
      */
-    public function getRefModele()
+    public function getModele()
     {
-        return $this->refModele;
+        return $this->modele;
     }
 
     /**
-     * @param mixed $refModele
+     * @param mixed $modele
      */
-    public function setRefModele($refModele)
+    public function setModele($modele)
     {
-        $this->refModele = $refModele;
+        $this->modele = $modele;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMarque()
+    {
+        return $this->marque;
+    }
+
+    /**
+     * @param mixed $marque
+     */
+    public function setMarque($marque)
+    {
+        $this->marque = $marque;
     }
 
 }

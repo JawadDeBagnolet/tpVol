@@ -9,6 +9,7 @@ class Utilisateur{
     private $dateNaissance;
     private $ville;
     private $role;
+    private $refModele;
 
     public function __construct(array $donnees)
     {
@@ -155,6 +156,22 @@ class Utilisateur{
     public function setRole($role)
     {
         $this->role = $role;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRefModele()
+    {
+        return $this->refModele;
+    }
+
+    /**
+     * @param mixed $refModele
+     */
+    public function setRefModele($refModele)
+    {
+        $this->refModele = $refModele;
     }
 
 }
