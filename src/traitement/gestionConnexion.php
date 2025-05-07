@@ -15,8 +15,7 @@ else{
     $userRepository = new UtilisateurRepository();
     $user = $userRepository->connexion($user);
     if(!empty($user->getIdUtilisateur())){
-        if(password_verify($_POST['mdpCo'],
-            $user->getMdp())){
+        if(password_verify($_POST['mdpCo'] , $user->getMdp())){
             $_SESSION['id_user'] = $user->getIdUtilisateur();
             $_SESSION['email'] = $user->getEmail();
             if($user->getRole() == "admin"){

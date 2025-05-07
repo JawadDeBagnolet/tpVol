@@ -17,19 +17,19 @@ class UtilisateurRepository{
         ));
         return $utilisateur;
     }
-    public function connexion(Utilisateur $utilisateur){
-        $bdd=new bdd();
-        $database=$bdd->getBdd();
+    public function connexion(Utilisateur $utilisateur) {
+        $bdd = new bdd();
+        $database = $bdd->getBdd();
         $req = $database->prepare('SELECT * FROM utilisateur WHERE email = :email');
         $req->execute(array(
             'email' => $utilisateur->getEmail()
         ));
         $donnees = $req->fetch();
-        if($donnees){
-            $donnees->setMdp($donnees['mdp']);
-            $donnees->setRole($donnees["role"]);
-            $donnees->setEmail($donnees["email"]);
-            $donnees->setIdUtilisateur($donnees['id_utilisateur']);
+        if ($donnees) {
+            $utilisateur->setMdp($donnees['mdp']);
+            $utilisateur->setRole($donnees["role"]);
+            $utilisateur->setEmail($donnees["email"]);
+            $utilisateur->setIdUtilisateur($donnees['id_utilisateur']);
         }
         return $utilisateur;
     }
@@ -66,5 +66,44 @@ class UtilisateurRepository{
         $req->execute();
         $result = $req->fetch();
         return $result[0];
+    }
+    public function listeUser(){
+        $listeUser = [];
+        $bdd = new bdd();
+        $database = $bdd ->getBdd();
+        $req = $database->prepare('SELECT * FROM utilisateur');
+        $req->execute();
+        $listeUsersBdd = $req->fetchAll();
+        foreach($listeUsersBdd as $listeUserBdd){
+            $listeUser[] = new Utilisateur([
+                'idUser' => $listeUserBdd['id_utilisateur'],
+                'nom' => $listeUserBdd['nom'],
+                'prenom' => $listeUserBdd['prenom'],
+                'email' => $listeUserBdd['email'],
+                'mdp' => $listeUserBdd['mdp'],
+                'role' => $listeUserBdd['role'],
+            ]);
+        }
+        return $listeUser;
+    }
+    public function profilUser($idUser){
+        $bdd = new bdd();
+        $database = $bdd->getBdd();
+        $req = $database->prepare('SELECT * FROM user WHERE id_user = :id');
+        $req->execute(['id' => $idUser]);
+        $data = $req->fetch();
+
+        if ($data) {
+            return new Utilisateur([
+                'idUser' => $data['id_user'],
+                'nom' => $data['nom'],
+                'prenom' => $data['prenom'],
+                'email' => $data['email'],
+                'mdp' => $data['mdp'],
+                'role' => $data['role'],
+            ]);
+        }
+
+        return null;
     }
 }
