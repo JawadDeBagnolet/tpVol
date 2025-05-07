@@ -3,27 +3,47 @@
 class AvionRepository
 {
     public function recupererAvion(){
-        $avion = [];
-        $bdd= new bdd();
-        $database = $bdd ->getBdd();
-        $req = $database->prepare('SELECT * FROM avion ORDER BY type');
+        $avions = [];
+        $bdd = new bdd();
+        $database = $bdd->getBdd();
+
+        $req = $database->prepare('
+        SELECT a.*, m.modele as nom_modele, m.marque 
+        FROM avion a
+        LEFT JOIN modele m ON a.ref_modele = m.id_modele
+        ORDER BY a.nom
+    ');
         $req->execute();
-        $avionBdd = $req->fetchAll();
-        foreach($avionBdd as $avionBdd){
-            $avion[] = new Avion([
-                'idAvion' => $avionBdd['id_avion'],
-                'type' => $avionBdd['type'],
+
+        foreach($req->fetchAll(PDO::FETCH_ASSOC) as $row){
+            $avions[] = new Avion([
+                'idAvion' => $row['id_avion'],
+                'nom' => $row['nom'],
+                'modele' => $row['nom_modele'],
+                'marque' => $row['marque']
             ]);
         }
-        return $avion;
+        return $avions;
     }
 
+    public function creerAvion($nom, $ref_modele) {
+        $bdd = new bdd();
+        $database = $bdd->getBdd();
+        $req = $database->prepare("
+            INSERT INTO avion (nom, ref_modele) 
+            VALUES (:nom, :ref_modele)
+        ");
+        $req->execute(array(
+            'nom' => $nom,
+            'ref_modele' => $ref_modele
+        ));
+    }
     public function deleteAvion($idAvion){
         $bdd = new bdd();
-        $database=$bdd->getBdd();
+        $database = $bdd->getBdd();
         $req = $database->prepare("DELETE FROM avion WHERE id_avion = :id_avion");
         $req->execute(array(
-            "id_avion"=>$idAvion
+            "id_avion" => $idAvion
         ));
     }
 

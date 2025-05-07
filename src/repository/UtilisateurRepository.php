@@ -86,11 +86,11 @@ class UtilisateurRepository{
         }
         return $listeUser;
     }
-    public function profilUser($idUser){
+    public function profilUser($idutilisateur){
         $bdd = new bdd();
         $database = $bdd->getBdd();
         $req = $database->prepare('SELECT * FROM user WHERE id_user = :id');
-        $req->execute(['id' => $idUser]);
+        $req->execute(['id' => $idutilisateur]);
         $data = $req->fetch();
 
         if ($data) {
@@ -105,5 +105,26 @@ class UtilisateurRepository{
         }
 
         return null;
+    }
+
+    public function modifUser(Utilisateur $utilisateur){
+        $bdd = new bdd();
+        $database=$bdd->getBdd();
+        $req = $database->prepare("UPDATE utilisateur SET role = :role WHERE id_utilisateur = :id_utilisateur");
+        $req->execute(array(
+            "role"=>$utilisateur->getRole(),
+            "id_user"=> $utilisateur->getIdUser()
+        ));
+        return $utilisateur;
+    }
+
+    public function deleteUser(Utilisateur $utilisateur){
+        $bdd = new bdd();
+        $database=$bdd->getBdd();
+        $req = $database->prepare("DELETE FROM user WHERE id_utilisateur = :id_utilisateur");
+        $req->execute(array(
+            "id_utilisateur"=>$utilisateur->getIdUtilisateur()
+        ));
+        return $utilisateur;
     }
 }
