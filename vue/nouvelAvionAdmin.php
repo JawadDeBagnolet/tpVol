@@ -72,9 +72,8 @@ if(isset($_GET['parametre'])) {
                 <select class="form-select" id="ref_modele" name="ref_modele" required>
                     <option value="">Sélectionnez un modèle</option>
                     <?php foreach ($modeles as $modele): ?>
-                        <!-- Ici on utilise les méthodes getter de l'objet Modele -->
-                        <option value="<?= htmlspecialchars($modele->getIdModele()) ?>">
-                            <?= htmlspecialchars($modele->getMarque() . ' ' . $modele->getModele()) ?>
+                        <option value="<?= htmlspecialchars($modele->getIdModele() ?? '') ?>">
+                            <?= htmlspecialchars(($modele->getMarque() ?? '') . ' ' . ($modele->getModele() ?? '')) ?>
                         </option>
                     <?php endforeach; ?>
                 </select>

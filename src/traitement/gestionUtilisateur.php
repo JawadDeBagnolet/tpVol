@@ -2,7 +2,7 @@
 require_once "../bdd/bdd.php";
 require_once "../modele/Utilisateur.php";
 require_once "../repository/UtilisateurRepository.php";
-$idUser = $_POST['idSaisie'];
+$idUser = $_POST['button'];
 var_dump($_POST);
 if (isset($_POST['button'])){
     if($_POST['button'] == "admin" || $_POST['button'] == "user"){
@@ -12,6 +12,9 @@ if (isset($_POST['button'])){
         elseif($_POST['button'] === "user"){
             $role="user";
         }
+        elseif ($_POST['button'] === "pilote"){
+            $role="pilote";
+        }
         $user=new Utilisateur([
                 "idUser"=>$idUser,
                 "role"=>$role
@@ -20,10 +23,10 @@ if (isset($_POST['button'])){
         $userRepo=new UtilisateurRepository();
         $test = $userRepo->modifUser($user);
         if($test){
-            header("Location:../../vue/listeUsers.php?parametre=modificationReussie");
+            header("Location:../../vue/listeUtilisateur.php?parametre=modificationReussie");
         }
         else{
-            header("Location:../../vue/listeUsers.php?parametre=erreur");
+            header("Location:../../vue/listeUtilisateur.php?parametre=erreur");
         }
     }
     elseif($_POST['button']=='suppr'){
@@ -34,12 +37,14 @@ if (isset($_POST['button'])){
         $userRepo=new UtilisateurRepository();
         $test = $userRepo->deleteUser($user);
         if($test){
-            header("Location:../../vue/listeUsers.php?parametre=suppressionReussie");
+            header("Location:../../vue/listeUtilisateur.php?parametre=suppressionReussie");
         }
         else{
-            header("Location:../../vue/listeUsers.php?parametre=erreur");
+            header("Location:../../vue/listeUtilisateur.php?parametre=erreur");
         }
     }
+}else{
+    echo "else";
 }
 
 

@@ -1,6 +1,6 @@
 <?php
-require_once "../src/bdd/bdd.php";
-require_once "../src/modele/Modele.php";
+require_once "../bdd/bdd.php";
+require_once "../modele/Modele.php";
 
 class ModeleRepository
 {

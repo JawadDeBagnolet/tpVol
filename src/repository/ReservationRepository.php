@@ -34,4 +34,24 @@ class ReservationRepository{
 
         return $reservations;
     }
+    public function deleteReservation($idReservation){
+        $bdd = new Bdd();
+        $database=$bdd->getBdd();
+        $req = $database->prepare("DELETE FROM reservation WHERE id_reservation = :id_reservation");
+        $req->execute(array(
+            "id_reservation"=>$idReservation
+        ));
+        return $idReservation;
+    }
+    public function nvReservation(Reservation $reservation) {
+        $bdd = new Bdd();
+        $database = $bdd->getBdd();
+        $req = $database->prepare('INSERT INTO reservation (ref_utilisateur, ref_vol, date_reservation) VALUES (:ref_user, :ref_seance, :date_reservation)');
+        $req->execute([
+            'ref_user' => $reservation->getRefUser(),
+            'ref_seance' => $reservation->getRefSeance(),
+            'date_reservation'=>date('Y-m-d')
+        ]);
+        return $reservation;
+    }
 }

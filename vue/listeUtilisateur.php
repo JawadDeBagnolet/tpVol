@@ -102,10 +102,10 @@
                 <div class="col-md-4">
                     <label class="form-label">Actions :</label>
                     <div class="d-grid gap-2 d-md-block">
-                        <button type="submit" name="action" value="promouvoir_admin" class="btn btn-warning">Promouvoir Admin</button>
-                        <button type="submit" name="action" value="promouvoir_pilote" class="btn btn-success">Promouvoir Pilote</button>
-                        <button type="submit" name="action" value="declasser_user" class="btn btn-secondary">Déclasser User</button>
-                        <button type="submit" name="action" value="supprimer" class="btn btn-danger">Supprimer</button>
+                        <button type="submit" name="button" value="admin" class="btn btn-warning">Promouvoir Admin</button>
+                        <button type="submit" name="button" value="pilote" class="btn btn-success">Promouvoir Pilote</button>
+                        <button type="submit" name="button" value="user" class="btn btn-secondary">Déclasser User</button>
+                        <button type="submit" name="button" value="suppr" class="btn btn-danger">Supprimer</button>
                     </div>
                 </div>
             </div>

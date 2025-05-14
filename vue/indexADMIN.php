@@ -40,13 +40,7 @@ if (!$_SESSION['connexionAdmin']){
                 <a class="btn btn-primary" href="listeAvions.php">Gestion Avions</a>
                 <br>
                 <br>
-                <a class="btn btn-primary" href="listeSeances.php">Gestion Séances</a>
-                <br>
-                <br>
                 <a class="btn btn-primary" href="listeReservations.php">Gestion Réservations</a>
-                <br>
-                <br>
-                <a class="btn btn-primary" href="listeContacts.php">Gestion Contacts</a>
                 <br>
             </div>
         </div>

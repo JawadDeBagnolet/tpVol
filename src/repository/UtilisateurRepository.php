@@ -113,7 +113,7 @@ class UtilisateurRepository{
         $req = $database->prepare("UPDATE utilisateur SET role = :role WHERE id_utilisateur = :id_utilisateur");
         $req->execute(array(
             "role"=>$utilisateur->getRole(),
-            "id_user"=> $utilisateur->getIdUser()
+            "id_utilisateur"=> $utilisateur->getIdUtilisateur()
         ));
         return $utilisateur;
     }
